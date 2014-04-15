@@ -1,10 +1,10 @@
 
 /*================================================================
-=>                  App = festappWeb
+=>                  App = festapp
 ==================================================================*/
 /*global angular*/
 
-var app = angular.module('festappWeb', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'ngAnimate']);
+var app = angular.module('festapp', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'ngAnimate']);
 
 
 app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
@@ -26,11 +26,11 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
 
 
 /*================================================================
-=>                  festappWeb App Run()  
+=>                  festapp App Run()
 ==================================================================*/
 
 app.run(['$rootScope', function ($rootScope) {
-	
+
 	'use strict';
 
 	console.log('Angular.js run() function...');

@@ -33,7 +33,6 @@ var gutil      = require('gulp-util'),
 
 	require('gulp-grunt')(gulp);
 
-
 	var	settings = {
 		livereloadPort: 35729,
 		serverPort: 9000,
@@ -57,6 +56,10 @@ var gutil      = require('gulp-util'),
 		},
 		scss: 'scss/'
 	};
+
+    var cssToInject = [
+        settings.src.bower + 'semantic-ui/build/packaged/css/semantic*.css'
+    ];
 
  	// jsHint Options.
  	var hintOptions = JSON.parse(fs.readFileSync('.jshintrc', 'utf8'));
@@ -136,13 +139,16 @@ var gutil      = require('gulp-util'),
        console.log('-------------------------------------------------- COVERT - scss');
 
         var stream = gulp.src(settings.src.css + 'application.scss')
-           .pipe(sass({includePaths: [settings.src.css]}))
+           .pipe(sass({
+                includePaths: [settings.src.css],
+                sourceComments: 'map'
+            }))
            .pipe(gulp.dest(settings.scss))
            .pipe(refresh(livereload));
         return stream;
     });
 
-	gulp.task('concat:css', ['convert:scss'], function () {
+	gulp.task('concat:css', ['convert:scss', 'copy:css:bower'], function () {
 
 		console.log('-------------------------------------------------- CONCAT :css ');
 	  	gulp.src([settings.src.css + 'fonts.css', settings.scss + 'application.css', settings.src.css + '*.css'])
@@ -198,6 +204,13 @@ var gutil      = require('gulp-util'),
 			.pipe(gulp.dest(settings.build.app))
 			.pipe(refresh(livereload));
 	});
+
+    gulp.task('copy:css:bower', function() {
+
+        console.log('-------------------------------------------------- COPY :css:bower');
+        gulp.src(cssToInject)
+            .pipe(gulp.dest(settings.build.css));
+    });
 
 	gulp.task('copy:images', function() {
 
@@ -275,7 +288,7 @@ var gutil      = require('gulp-util'),
 	gulp.task('clean:css', function () {
 
 		console.log('-------------------------------------------------- CLEAN :css');
-	    gulp.src([settings.build.css], {read: false})
+	    gulp.src([settings.build.css, settings.scss], {read: false})
 	        .pipe(clean({force: true}));
 	});
 

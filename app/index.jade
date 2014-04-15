@@ -2,11 +2,15 @@ doctype html
 html(lang='en')
     head
         meta(charset='utf-8')
-        title festappWeb
+        title festapp
         meta(name='viewport', content='width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1')
         link(rel='stylesheet', href='css/styles.css')
-    body(ng-app='festappWeb')
-        h1 Welcome to Boom Angular.js Generator!
+    body(ng-app='festapp')
+        header
+            nav.ui.menu.inverted
+                h3.header.item FestApp
+                a.item(href='/') Home
+        h1.ui.header Welcome to Boom Angular.js Generator!
 
         div(ng-view='ng-view')
 
