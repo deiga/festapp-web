@@ -33,7 +33,6 @@ module.exports = function (grunt) {
                 "angular-sanitize",
                 "angular-route",
                 "angular-animate",
-                "zepto",
                 "modernizr",
                 "semantic-ui"
             ],
@@ -43,7 +42,8 @@ module.exports = function (grunt) {
                 'angular-cookies': 'angular',
                 'angular-sanitize': 'angular',
                 'angular-route': 'angular',
-                'angular-animate': 'angular'
+                'angular-animate': 'angular',
+                'semantic-ui': 'jquery'
             },
             bowerOptions: {
               relative: true
