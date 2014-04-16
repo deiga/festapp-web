@@ -28,22 +28,24 @@ module.exports = function (grunt) {
             dest: 'build/js/_bower.js',
             include: [
                 "angular",
-                "angular-resource",
                 "angular-cookies",
                 "angular-sanitize",
                 "angular-route",
                 "angular-animate",
                 "modernizr",
-                "semantic-ui"
+                'jquery',
+                'lodash',
+                "semantic-ui",
+                'restangular'
             ],
             dependencies: {
 
-                'angular-resource': 'angular',
                 'angular-cookies': 'angular',
                 'angular-sanitize': 'angular',
                 'angular-route': 'angular',
                 'angular-animate': 'angular',
-                'semantic-ui': 'jquery'
+                'semantic-ui': 'jquery',
+                'restangular': 'angular'
             },
             bowerOptions: {
               relative: true

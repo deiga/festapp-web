@@ -4,7 +4,7 @@
 ==================================================================*/
 /*global angular*/
 
-var app = angular.module('festapp', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'ngAnimate']);
+var app = angular.module('festapp', ['ngCookies', 'restangular', 'ngSanitize', 'ngRoute', 'ngAnimate']);
 
 
 app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
@@ -23,6 +23,13 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
 	// This is required for Browser Sync to work poperly
 	$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 }]);
+
+app.config(function(RestangularProvider) {
+    RestangularProvider.setBaseUrl('http://festapp-server.herokuapp.com/api/v1');
+    RestangularProvider.setRestangularFields({
+      id: "_id"
+    });
+})
 
 
 /*================================================================
