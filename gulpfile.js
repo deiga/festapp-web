@@ -9,7 +9,7 @@ var gutil      = require('gulp-util'),
 	sass       = require('gulp-sass'),
 	minifyCSS  = require('gulp-minify-css'),
 	minifyHTML = require('gulp-minify-html'),
-	gzip       = require("gulp-gzip"),
+	gzip       = require('gulp-gzip'),
 	imagemin   = require('gulp-imagemin'),
 	watch      = require('gulp-watch'),
 	plumber    = require('gulp-plumber'),
@@ -245,7 +245,7 @@ var gutil      = require('gulp-util'),
 
 		var scssFiles  = gulp.watch([settings.src.css + '*.scss', settings.src.css + '**/*.scss'], ['concat:css']);
 
-        var jsFiles    = gulp.watch([settings.src.js + '*.js',    settings.src.js + '**/*.js'],    ['concat:js']);
+        var jsFiles    = gulp.watch(settings.src.js + '**/*.js',    ['concat:js']);
 
         var indexFile  = gulp.watch([settings.src.app + '*.jade'], ['copy:jade:root']);
 

@@ -7,13 +7,13 @@
 var app = angular.module('festapp', ['ngCookies', 'restangular', 'ngSanitize', 'ngRoute', 'ngAnimate']);
 
 
-app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
+app.config(['$routeProvider', '$locationProvider', '$httpProvider', 'RestangularProvider', function ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) {
 	'use strict';
 
 	$routeProvider
-		.when('/home', {
-			templateUrl: 'templates/home.html'
-		})
+        .when('/home', {
+            templateUrl: 'templates/home.html'
+        })
 		.otherwise({
 			redirectTo: '/home'
 		});
@@ -22,14 +22,12 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
 
 	// This is required for Browser Sync to work poperly
 	$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-}]);
 
-app.config(function(RestangularProvider) {
-    RestangularProvider.setBaseUrl('http://festapp-server.herokuapp.com/api/v1');
+    RestangularProvider.setBaseUrl('http://pacific-anchorage-3069.herokuapp.com/api/v1');
     RestangularProvider.setRestangularFields({
-      id: "_id"
+        id: '_id'
     });
-})
+}]);
 
 
 /*================================================================
