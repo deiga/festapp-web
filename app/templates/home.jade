@@ -1,6 +1,16 @@
 h2 Schedule
 
 #events(ng-controller="EventsCtrl")
+    {{festival}}
     ul
         li(ng-repeat="event in allEvents")
             {{event}}
+
+    ul
+        li(ng-repeat="event in upcomingEvents")
+            {{event}}
+
+    table
+        tbody
+            tr(ng-repeat="stage in stages")
+                td {{stage.name}}
